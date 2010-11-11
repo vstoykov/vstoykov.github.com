@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="bg-BG" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<head> 
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/> 
+  <title>Venelin Stoykov's WEB Site</title>
+  <link rel="shortcut icon" href="favicon.png"/>
+  <link rel="stylesheet" type="text/css" href="css/style.css" media="all"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
+  <script type="text/javascript">
+  $(function() {
+    $("#main_menu").tabs({
+      ajaxOptions: {
+        error: function(xhr, status, index, anchor) {
+          $(anchor.hash).html("Couldn't load this tab. We'll try to fix this as soon as possible. If this wouldn't be a demo.");
+        }
+      }
+    });
+  }); 
+  </script>
+  <style type="text/css">
+      .ui-tabs-hide {display:none;}
+  </style>
+</head>
+<body>
+  <div id="header">
+      <div id="header_logo"><h1>Venelin Stoykov's Personal WEB Site</h1></div>
+      <div id="main_menu">
+          <ul>
+              <li><a href="#home"><span>Home</span></a></li>
+              <li><a href="#about_me"><span>About Me</span></a></li>
+              <li><a href="gallery.html"><span>Gallery</span></a></li>
+              <li><a href="#contact_me"><span>Contact Me</span></a></li>
+          </ul>
+      </div>
+  </div>
+
+  <div id="body">
+      <div class="left_column">
+          <div class="article">
+              <h1>Article 1</h1>
+              <p>Some text for article 1</p>
+          </div>
+          <div class="article">
+              <h1>Article 2</h1>
+              <p>Some text for second article</p>
+          </div>
+          <div class="article">
+              <h1>Article 3</h1>
+              <p>Some other text to fill article 3</p>
+          </div>
+      </div>
+      <div class="main_content">
+          <div id="home">
+              <div class="article">
+                  <h1>Начало</h1>
+                  <div class="content">
+                      <h2>Добре дошли в новата ми страница</h2>
+                      <p>Тук ще намерите информация за мен, както и за моите интереси.
+                      Може също да намерите и полезна информация в сверата на IT</p>
+                  </div>
+              </div>
+              <div class="article">
+                  <h1>News</h1>
+                  <div class="content">
+                      <dl>
+                          <dt>News 1</dt><dd>Content of news 1</dd>
+                          <dt>News 2</dt><dd>Content of news 1</dd>
+                          <dt>News 3</dt><dd>Content of news 1</dd>
+                      </dl>
+                  </div>
+              </div>
+          </div>
+          <div id="about_me">
+              <div class="article">
+                  <h1>За Мен</h1>
+                  <div class="content">
+                      <div class="img_holder">&nbsp;</div>
+                      <p>Казвам се Венелин Красимиров Стойков, роден съм в малкото китно
+                      старопланинско градче Елена.......</p>
+                  </div>
+              </div>
+          </div>
+          <div id="contact_me">
+            <div class="article">
+              <h1>Контакти</h1>
+              <div class="content">
+                <p>Тук ще намерите моите координати:</p>
+                <dl>
+                  <dt>skype:</dt><dd>doommazter</dd>
+                  <dt>icq:</dt><dd>297864804</dd>
+                  <dt>facebook:</dt><dd><a href="http://www.facebook.com/vstoykov">www.facebook.com/vstoykov</a></dd>
+                  <dt>e-mail:</dt><dd><a href="mailto:doommaster@email.bg">doommaster@email.bg</a></dd>
+                  <dt>GSM:</dt><dd>0878 1987 10</dd><dd>088 33 155 02</dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+      </div>
+  </div>
+  <div id="footer">
+      <p>Last actualization 2010</p>
+  </div>
+</body>
+</html>
