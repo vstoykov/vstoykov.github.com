@@ -12,10 +12,10 @@ body {
     padding: 0px;
     width: 100%;
 }
-a{text-decoration:none; color:#13F;}
-a:visited{text-decoration:none; color:#13F;}
-a:active{text-decoration:underline; color:#56F;}
-a:hover{text-decoration:underline; color:#56F;}
+a{text-decoration:none; color:#151;}
+a:visited{text-decoration:none; color:#151;}
+a:active{text-decoration:underline; color:#181;}
+a:hover{text-decoration:underline; color:#181;}
 
 .shadow {
     -moz-box-shadow: 3px 3px 4px #000;
@@ -85,7 +85,7 @@ a:hover{text-decoration:underline; color:#56F;}
     line-height: 32px;
     width:100px;
     text-align: center;
-    text-shadow: #54e 1px 1px 1px;
+    text-shadow: #090 1px 1px 1px;
     font-size: 15px;
     font-weight: bold;
     margin:0px;
@@ -221,11 +221,11 @@ a:hover{text-decoration:underline; color:#56F;}
 div.content {display: table;}
 
 dl.links {margin-left: 20px;}
-.links a {margin: 10px;}
+.links a {margin: 10px; display: block;}
 .links a dt {color: #000;}
 .links a dd {margin-left: 0px;}
-.links a:hover dt {text-decoration: none;}
+.links a:hover {text-decoration:none;}
 
-.gallery li {list-style: none; float: left; margin: 5px;}
+.gallery li {list-style: none; float: left; margin: 20px;}
 .gallery li img {width: 100px; height: 100px;}
-.gallery li p {text-align: center; }
+.gallery li p {text-align: center; margin-top: 10px;}

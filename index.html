@@ -5,8 +5,10 @@
   <title>Venelin Stoykov's WEB Site</title>
   <link rel="shortcut icon" href="favicon.png"/>
   <link rel="stylesheet" type="text/css" href="css/style.css" media="all"/>
+  <link rel="stylesheet" type="text/css" href="css/jquery.lightbox-0.5.css" media="all" />
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="js/jquery.lightbox-0.5.min.js"></script>
   <script type="text/javascript">
   $(function() {
     $("#main_menu").tabs({
@@ -17,6 +19,42 @@
       }
     });
   }); 
+  </script>
+    <script type="text/javascript">
+  var galleries_obj;
+  
+  function debug(data) { console.log(data); }
+  
+  function loadGallery() {
+    $.getJSON('gallery.json', function(data) {galleries_obj = data; listGalleries(data)});
+  }
+  
+  function galleryShow(gallery) {
+    pictures = galleries_obj[gallery].pictures;
+    //debug(pictures);
+    $('#gallery_list').html('');
+    for (picture in pictures) {
+      pic_location = 'gallery/'+gallery+'/'+pictures[picture];
+      $('#gallery_list').append('<li><a href="'+pic_location+'"><img src="'+pic_location+'" width="100" height="100" alt="" class="shadow" /></a><p>'+pictures[picture]+'</p></li>');
+    }
+    $('#gallery_list a').lightBox();
+  }
+  
+  function listGalleries(galleries) {
+    //debug(galleries);
+    for (gallery in galleries) {
+      gallery_obj = galleries[gallery];
+      $('#galleries_list').append('<li><a href="javascript:void(0)" id="gallery_'+gallery+'" name="'+gallery+'"><img src="img/gallery-folder.png" class="shadow" /><p>'+gallery_obj.title+'</p></a></li>');
+      $('#gallery_'+gallery).click(function(){
+        gallery = $(this).attr('name');
+        galleryShow(gallery);
+      });
+    }
+  }
+
+  $(document).ready(function(){
+    if (galleries_obj == undefined) loadGallery();
+  });
   </script>
   <style type="text/css">
       .ui-tabs-hide {display:none;}
@@ -29,7 +67,7 @@
           <ul>
               <li><a href="#home"><span>Начало</span></a></li>
               <li><a href="#about_me"><span>За Мен</span></a></li>
-              <li><a href="gallery.html"><span>Галерия</span></a></li>
+              <li><a href="#gallery"><span>Галерия</span></a></li>
               <li><a href="#links"><span>Връзки</span></a></li>
               <li><a href="#contact_me"><span>Контакти</span></a></li>
           </ul>
@@ -84,6 +122,15 @@
                       <p>Nam tempus, diam ac scelerisque dictum, metus metus eleifend erat, nec pulvinar sem erat nec mi. Duis tempus, libero aliquet luctus porta, leo lorem sollicitudin justo, in sagittis justo lectus nec ante. Maecenas tincidunt ipsum ipsum, scelerisque fringilla est. Ut massa sem, semper ut semper.</p>
                   </div>
               </div>
+          </div>
+          <div id="gallery">
+            <div class="article">
+              <h1>Gallery</h1>
+              <div class="content">
+                  <dir id="galleries_list" class="gallery"></dir>
+                  <dir id="gallery_list" class="gallery"></dir>
+              </div>
+            </div>
           </div>
           <div id="links">
             <div class="article">
