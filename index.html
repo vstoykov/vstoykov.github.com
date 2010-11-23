@@ -11,7 +11,8 @@
   <script type="text/javascript" src="js/jquery.lightbox-0.5.min.js"></script>
   <script type="text/javascript" src="js/gallery.js"></script>
   <script type="text/javascript">
-  function debug(data) { console.log(data); }
+  var DEBUG = false;
+  function debug(data) { if(DEBUG) console.log(data); }
     
   $(function() {
     $("#main_menu").tabs({
