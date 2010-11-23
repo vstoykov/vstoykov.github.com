@@ -9,53 +9,25 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
   <script type="text/javascript" src="js/jquery.lightbox-0.5.min.js"></script>
+  <script type="text/javascript" src="js/gallery.js"></script>
   <script type="text/javascript">
+  function debug(data) { console.log(data); }
+    
   $(function() {
     $("#main_menu").tabs({
       ajaxOptions: {
         error: function(xhr, status, index, anchor) {
-          $(anchor.hash).html("Couldn't load this tab. We'll try to fix this as soon as possible. If this wouldn't be a demo.");
+          $(anchor.hash).html("Грешка: Страницата не може да бъде заредена.<br />Извинявам се за причиненото неудобство. Страницата ще бъде поправена при първа възможност.");
         }
       }
     });
   }); 
-  </script>
-    <script type="text/javascript">
-  var galleries_obj;
   
-  function debug(data) { console.log(data); }
-  
-  function loadGallery() {
-    $.getJSON('gallery.json', function(data) {galleries_obj = data; listGalleries(data)});
-  }
-  
-  function galleryShow(gallery) {
-    pictures = galleries_obj[gallery].pictures;
-    //debug(pictures);
-    $('#gallery_list').html('');
-    for (picture in pictures) {
-      pic_location = 'gallery/'+gallery+'/'+pictures[picture];
-      $('#gallery_list').append('<li><a href="'+pic_location+'"><img src="'+pic_location+'" width="100" height="100" alt="" class="shadow" /></a><p>'+pictures[picture]+'</p></li>');
-    }
-    $('#gallery_list a').lightBox();
-  }
-  
-  function listGalleries(galleries) {
-    //debug(galleries);
-    for (gallery in galleries) {
-      gallery_obj = galleries[gallery];
-      $('#galleries_list').append('<li><a href="javascript:void(0)" id="gallery_'+gallery+'" name="'+gallery+'"><img src="img/gallery-folder.png" class="shadow" /><p>'+gallery_obj.title+'</p></a></li>');
-      $('#gallery_'+gallery).click(function(){
-        gallery = $(this).attr('name');
-        galleryShow(gallery);
-      });
-    }
-  }
-
   $(document).ready(function(){
-    if (galleries_obj == undefined) loadGallery();
-  });
+    debug("document.ready")
+  })
   </script>
+
   <style type="text/css">
       .ui-tabs-hide {display:none;}
   </style>
@@ -77,16 +49,20 @@
   <div id="body">
       <div class="left_column">
           <div class="article">
-              <h1>Etiam ut eros sed lectus.</h1>
-              <p>Cras quis libero sapien. Proin non orci sed libero tincidunt laoreet id a metus. Sed eget enim in enim aliquam congue quis non magna.</p>
+              <h1>Любим цитат</h1>
+                <p class="text">Поражение не съществува, докато човек не се признае за победен!</p>
           </div>
           <div class="article">
-              <h1>Duis elementum mauris</h1>
-              <p>Sed pharetra, turpis eu eleifend elementum, augue lorem congue est, non dignissim felis sem ut libero. Praesent molestie molestie dui et gravida. Morbi dignissim.</p>
+              <h1>Ubuntu User</h1>
+              <p class="center"><a href="http://ubuntucounter.geekosophical.net" title="The Ubuntu Counter Project - user number # 23784"><img src="http://ubuntucounter.geekosophical.net/img/ubuntu-user2.php?user=23784" alt="The Ubuntu Counter Project - user number # 23784"></a></p>
           </div>
           <div class="article">
-              <h1>Nullam ac nibh dui, congue.</h1>
-              <p>Nam quis nulla sapien, sit amet ornare elit. Ut consequat ornare dui sit amet pellentesque. Mauris lobortis mauris sit amet sem aliquet blandit. Quisque.</p>
+              <h1>Facebook Badge</h1>
+              <!-- Facebook Badge START -->
+              <p class="center">
+               <a href="http://bg-bg.facebook.com/vstoykov" target="_TOP" title="инж. В.Стойков"><img src="http://badge.facebook.com/badge/1489354320.122.791619019.png" width="120" height="227" style="border: 0px;" /></a>
+              </p>
+              <!-- Facebook Badge END -->
           </div>
       </div>
       <div class="main_content">
@@ -95,15 +71,15 @@
                   <h1>Начало</h1>
                   <div class="content">
                       <h2>Добре дошли в новата ми страница</h2>
-                      <p>Тук ще намерите информация за мен, както и за моите интереси.
-                      Може също да намерите и полезна информация в сверата на IT</p>
-                      <p>Suspendisse lorem eros, adipiscing in congue non, consequat at nunc. Sed sit amet cursus libero. Sed eleifend laoreet imperdiet. Integer accumsan mattis lacus, nec interdum sapien euismod vitae. Phasellus luctus metus non dui pretium et facilisis enim pellentesque. Ut consectetur lacus condimentum eros mattis in imperdiet nulla vehicula. Aliquam hendrerit semper massa cursus elementum. Morbi egestas.</p>
+                      <p class="text">Тук ще намерите информация за мен, както и за моите интереси.
+                      Може също да намерите и полезна информация в сферата на IT</p>
+                      <p class="text">Suspendisse lorem eros, adipiscing in congue non, consequat at nunc. Sed sit amet cursus libero. Sed eleifend laoreet imperdiet. Integer accumsan mattis lacus, nec interdum sapien euismod vitae. Phasellus luctus metus non dui pretium et facilisis enim pellentesque. Ut consectetur lacus condimentum eros mattis in imperdiet nulla vehicula. Aliquam hendrerit semper massa cursus elementum. Morbi egestas.</p>
                   </div>
               </div>
               <div class="article">
                   <h1>News</h1>
                   <div class="content">
-                      <dl>
+                      <dl class="news">
                           <dt>Proin non tristique libero. Vestibulum.</dt><dd>Morbi a nulla erat. Nullam adipiscing, dui nec congue convallis, lectus orci venenatis nisl, quis placerat diam elit ac diam. Phasellus ullamcorper tincidunt nunc.</dd>
                           <dt>Nulla augue turpis, venenatis at.</dt><dd>Praesent hendrerit, sapien a ultricies scelerisque, velit lorem placerat lectus, sed rutrum orci risus blandit nibh. Sed porttitor dictum tortor ut tristique. Mauris porttitor.</dd>
                           <dt>Integer a ligula est. In.</dt><dd>In hendrerit, dolor ac luctus ultricies, quam ipsum laoreet diam, eget cursus neque leo interdum elit. Donec adipiscing, augue quis congue faucibus, sem arcu.</dd>
@@ -116,9 +92,9 @@
                   <h1>За Мен</h1>
                   <div class="content">
                       <div class="img_holder"><img src="img/avatar.jpg" title="Венелин Стойков" alt="avatar.jpg" class="shadow"/></div>
-                      <p>Казвам се Венелин Красимиров Стойков, роден съм в малкото китно
+                      <p class="text">Казвам се Венелин Красимиров Стойков, роден съм в малкото китно
                       старопланинско градче Елена.......</p>
-                      <p>Integer aliquet luctus arcu eu feugiat. Proin ac arcu ut sapien blandit elementum. Suspendisse lectus velit, tristique ac commodo aliquet, interdum in purus. Pellentesque id lacus quis diam iaculis scelerisque at et mi. Pellentesque consequat nunc a mauris pretium sit amet blandit elit consectetur. Curabitur.</p>
+                      <p class="text">Integer aliquet luctus arcu eu feugiat. Proin ac arcu ut sapien blandit elementum. Suspendisse lectus velit, tristique ac commodo aliquet, interdum in purus. Pellentesque id lacus quis diam iaculis scelerisque at et mi. Pellentesque consequat nunc a mauris pretium sit amet blandit elit consectetur. Curabitur.</p>
                       <p>Nam tempus, diam ac scelerisque dictum, metus metus eleifend erat, nec pulvinar sem erat nec mi. Duis tempus, libero aliquet luctus porta, leo lorem sollicitudin justo, in sagittis justo lectus nec ante. Maecenas tincidunt ipsum ipsum, scelerisque fringilla est. Ut massa sem, semper ut semper.</p>
                   </div>
               </div>
@@ -128,7 +104,9 @@
               <h1>Gallery</h1>
               <div class="content">
                   <dir id="galleries_list" class="gallery"></dir>
+                  <a href="javascript:void(0)" onClick="listGalleries();" class="backToGalleries">Назад към галерията</a>
                   <dir id="gallery_list" class="gallery"></dir>
+                  <a href="javascript:void(0)" onClick="listGalleries();" class="backToGalleries">Назад към галерията</a>
               </div>
             </div>
           </div>
