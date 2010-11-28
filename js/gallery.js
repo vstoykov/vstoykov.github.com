@@ -42,3 +42,4 @@ function loadGallery() {
 $(document).ready(function(){
   if (galleries_obj == undefined) loadGallery();
 });
+
