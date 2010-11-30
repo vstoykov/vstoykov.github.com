@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="bg-BG" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
-<head> 
-  <meta http-equiv="content-type" content="text/html; charset=utf-8"/> 
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
   <title>Venelin Stoykov's WEB Site</title>
   <link rel="shortcut icon" href="favicon.png"/>
   <link rel="stylesheet" type="text/css" href="css/style.css" media="all"/>
@@ -11,9 +11,9 @@
   <script type="text/javascript" src="js/jquery.lightbox-0.5.min.js"></script>
   <script type="text/javascript" src="js/gallery.js"></script>
   <script type="text/javascript">
-  var DEBUG = false;
+  var DEBUG = true;
   function debug(data) { if(DEBUG) console.log(data); }
-    
+
   $(function() {
     $("#main_menu").tabs({
       ajaxOptions: {
@@ -22,8 +22,8 @@
         }
       }
     });
-  }); 
-  
+  });
+
   $(document).ready(function(){
     debug("document.ready")
   })
@@ -104,8 +104,8 @@
             <div class="article">
               <h1>Gallery</h1>
               <div class="content">
-                  <dir id="galleries_list" class="gallery"></dir>
                   <a href="javascript:void(0)" onClick="listGalleries();" class="backToGalleries">Назад към галерията</a>
+                  <dir id="galleries_list" class="gallery"></dir>
                   <dir id="gallery_list" class="gallery"></dir>
                   <a href="javascript:void(0)" onClick="listGalleries();" class="backToGalleries">Назад към галерията</a>
               </div>
@@ -117,7 +117,7 @@
               <div class="content">
                 <p>На това място ще слагам връзки към интересни и ползени неща в мрежата.</p>
                 <dl class="links">
-                  <a href="http://code.google.com/"><dt>Google COde</dt><dd>http://code.google.com/</dd></a>
+                  <a href="http://code.google.com/"><dt>Google Code</dt><dd>http://code.google.com/</dd></a>
                   <a href="http://www.linux-index.org/"><dt>Linux Index</dt><dd>http://www.linux-index.org/</dd></a>
                   <a href="http://www.linux-bg.org/"><dt>Linux BG</dt><dd>http://www.linux-bg.org/</dd></a>
                   <a href="http://appdb.winehq.org/"><dt>AppDb WineHq</dt><dd>http://appdb.winehq.org/</dd></a>
