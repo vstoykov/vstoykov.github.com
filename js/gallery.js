@@ -33,11 +33,11 @@ function listGalleries(galleries) {
 function loadGalleryData() {
   $.getJSON('js/gallery.json', function(data) {
     //console.log(data);
-    for (gallery in data) {
+    for(var gallery in data) {
         gallery_obj = data[gallery];
         pictures = gallery_obj.pictures
         gallery_obj.pictures_obj = {}
-        for (item in pictures) {
+        for(var item in pictures) {
             picture = pictures[item];
             g_location = 'gallery/'+gallery+'/';
             pic_location = g_location + picture;
