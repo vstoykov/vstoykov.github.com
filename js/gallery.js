@@ -15,6 +15,7 @@ function galleryShow(gallery) {
 }
 
 function listGalleries(galleries) {
+  var gallery;
   if (galleries == undefined) galleries = galleries_obj;
   $('.backToGalleries').css('visibility', 'hidden');
   $('#galleries_list').html('');
