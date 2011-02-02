@@ -4,7 +4,7 @@ function galleryShow(gallery) {
   gallery = galleries_obj[gallery]
   pictures = gallery.pictures;
   $('#gallery_list').html('');
-  for (item in pictures) {
+  for (var item in pictures) {
     picture = pictures[item];
     $('#gallery_list').append('<li><div class="thumb-holder"><a href="'+picture.src+'"><img src="'+picture.thumb.src+'" width="'+picture.thumb.width+'" height="'+picture.thumb.height+'" alt="" class="shadow" /></a></div><!--p>'+picture.title+'</p--></li>');
     //$('#gallery_list').append('<li><a href="'+picture.src+'">'+picture.thumb.outerHTML+'</a><p>'+picture.title+'</p></li>');
@@ -15,11 +15,10 @@ function galleryShow(gallery) {
 }
 
 function listGalleries(galleries) {
-  var gallery;
   if (galleries == undefined) galleries = galleries_obj;
   $('.backToGalleries').css('visibility', 'hidden');
   $('#galleries_list').html('');
-  for (gallery in galleries) {
+  for (var gallery in galleries) {
     gallery_obj = galleries[gallery];
     $('#galleries_list').append('<li><a href="javascript:void(0)" id="gallery_'+gallery+'" name="'+gallery+'"><img src="img/gallery-folder.png" class="shadow" /><p>'+gallery_obj.title+'</p></a></li>');
     $('#gallery_'+gallery).click(function(){
