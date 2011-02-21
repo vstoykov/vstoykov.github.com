@@ -68,16 +68,16 @@
                       <h2>Добре дошли в новата ми страница</h2>
                       <p class="text">Тук ще намерите информация за мен, както и за моите интереси.
                       Може също да намерите и полезна информация в сферата на IT.</p>
-                      <p class="text">Suspendisse lorem eros, adipiscing in congue non, consequat at nunc. Sed sit amet cursus libero. Sed eleifend laoreet imperdiet. Integer accumsan mattis lacus, nec interdum sapien euismod vitae. Phasellus luctus metus non dui pretium et facilisis enim pellentesque. Ut consectetur lacus condimentum eros mattis in imperdiet nulla vehicula. Aliquam hendrerit semper massa cursus elementum. Morbi egestas.</p>
+                      <p class="text">Това е тестов сайт направен само от HTML, CSS и JavaScript, с цел демонстриране на възможностите им. Сайтът може да се използва за пример за структориране на елементарен персонален сайт, който може да бъде лесно преработен. Създадена е основната html структура и основни класове. Персонализация може да бъде извършена само с редакция на css файла. Цялото съдържание е в един единствен html файл. Изключение прави галерията. Тя зарежда json обект с информация за това къде се намират изображенията и как са структорирани. След това необходимият html се генерира от JavaScript.</p>
                   </div>
               </div>
               <div class="article">
-                  <h1>News</h1>
+                  <h1>Новини</h1>
                   <div class="content">
                       <dl class="news">
-                          <dt>Proin non tristique libero. Vestibulum.</dt><dd>Morbi a nulla erat. Nullam adipiscing, dui nec congue convallis, lectus orci venenatis nisl, quis placerat diam elit ac diam. Phasellus ullamcorper tincidunt nunc.</dd>
-                          <dt>Nulla augue turpis, venenatis at.</dt><dd>Praesent hendrerit, sapien a ultricies scelerisque, velit lorem placerat lectus, sed rutrum orci risus blandit nibh. Sed porttitor dictum tortor ut tristique. Mauris porttitor.</dd>
-                          <dt>Integer a ligula est. In.</dt><dd>In hendrerit, dolor ac luctus ultricies, quam ipsum laoreet diam, eget cursus neque leo interdum elit. Donec adipiscing, augue quis congue faucibus, sem arcu.</dd>
+						  <dt>Използване на embeded images за background</dt><dd class="text">Когато имаме малки изображения като прост background който се повтаря, или някоя малка иконка е по-удачно да се вгради в css-a като текст. Така се пестят заявки към сървъра и при едно по-голямо натоварване може да е от полза. По принцип размера на изображението става малко по-голям, но и за всеки рекуест към сървъра също се праща не малко служебна информация в хедърите, за това за малки изображения се указва полезно нещо.</dd>
+                          <dt>Опит за използване на PIE</dt><dd class="text">Опитах се да използвам PIE за да може да се виждат CSS3 правилата и под IE, но резултатът се оказа плачевен, за това се отказах. За пореден път се убеждавам, че от IE-то нищо не става. Ще трябва да взема да направя един popup който да се появява на потребителите с IE, да им предложи да си сменят browser-a.</dd>
+                          <dt>Качване на динамичен сайт само от HTML, CSS и JavaScript</dt><dd class="text">Реших да направя сайт изцяло статичен, който да е по-разчупен и лесно да може да се ъпдейтва. HTML кодът е изчистен, украсен с CSS и с добавена динамика посресдством JavaScript.</dd>
                       </dl>
                   </div>
               </div>
@@ -87,10 +87,12 @@
                   <h1>За Мен</h1>
                   <div class="content">
                       <div class="img_holder"><img src="img/avatar.jpg" title="Венелин Стойков" alt="avatar.jpg" class="shadow"/></div>
-                      <p class="text">Казвам се Венелин Красимиров Стойков, роден съм в малкото китно
-                      старопланинско градче Елена.......</p>
-                      <p class="text">Integer aliquet luctus arcu eu feugiat. Proin ac arcu ut sapien blandit elementum. Suspendisse lectus velit, tristique ac commodo aliquet, interdum in purus. Pellentesque id lacus quis diam iaculis scelerisque at et mi. Pellentesque consequat nunc a mauris pretium sit amet blandit elit consectetur. Curabitur.</p>
-                      <p>Nam tempus, diam ac scelerisque dictum, metus metus eleifend erat, nec pulvinar sem erat nec mi. Duis tempus, libero aliquet luctus porta, leo lorem sollicitudin justo, in sagittis justo lectus nec ante. Maecenas tincidunt ipsum ipsum, scelerisque fringilla est. Ut massa sem, semper ut semper.</p>
+                      <h3>Кратка история</h3>
+					  <p class="text">Казвам се Венелин Красимиров Стойков, роден съм в малкото китно старопланинско градче Елена. Образованието си до 8-ми клас изкарах в родния си град, след което се преместих да уча в старопрестолния град Велико Търново, където завърших средното си образование. Започнах висшето си образование в Технически Университет - Варна. Там изкарах една година след което се преместих в Технически Университет - София, където придобих бакалавърска степен на инженер по електроника.</p>
+					  <h3>Интереси</h3>
+					  <p class="text">Основните ми интереси са в областа на информационните технологии</p>
+					  <h3>Професионално развитие</h3>
+					  <p class="text">Работих като мърчандайзър в Метро Варна. След идването ми в София започнах като съпорт към интернет фирма Метролан. Работих като системен администратор в Института по Информационни Технологии към БАН. След това започнах като WEB програмист за фирма Меджик Солюшънс, където работя и до сега.</p>
                   </div>
               </div>
           </div>
@@ -126,7 +128,7 @@
           <div id="contact_me">
             <div class="article">
               <h1>Контакти</h1>
-              <div class="content">
+              <div class="content contacts">
                 <p>Тук ще намерите моите координати:</p>
                 <dl>
                   <dt>skype:</dt><dd>doommazter</dd>
