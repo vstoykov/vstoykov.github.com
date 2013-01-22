@@ -1,3 +1,7 @@
-This is one html file personal site. Live DEMO of site can be found at
-http://vstoykov.github.com/venko-static-site/
+This is single html file personal site. Live DEMO of site can be found at
+http://vstoykov.github.com/
 
+Purpose of this project is to show how can be created very simple web page
+may be a portfolio or something. Design created for this static site is used
+for creation of my real personal web site which can be found at
+http://venelin.sytes.net/. The live site is written in Django Framework
