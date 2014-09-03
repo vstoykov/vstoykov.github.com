@@ -13,6 +13,14 @@
   <script type="text/javascript" src="js/gallery.js"></script>
   <script type="text/javascript">
   $(function() {
+    var galleries = new Galleries({
+        index: 'js/gallery.json',
+        url: 'gallery/',
+        element: '#galleries_list',
+        backButtons: '.backToGalleries',
+        folderImageSrc: 'img/gallery-folder.png',
+    });
+    galleries.loadData();
     $("#main_menu").tabs({
       ajaxOptions: {
         error: function(xhr, status, index, anchor) {
@@ -102,12 +110,11 @@
             <div class="article">
               <h1>Gallery</h1>
               <div class="content">
-                  <a href="javascript:void(0)" onClick="listGalleries();" class="backToGalleries">Назад към галерията</a>
+                  <a href="javascript:void(0)" class="backToGalleries">Назад към галерията</a>
 
                     <dir id="galleries_list" class="gallery"></dir>
-                    <dir id="gallery_list" class="gallery"></dir>
 
-                  <a href="javascript:void(0)" onClick="listGalleries();" class="backToGalleries">Назад към галерията</a>
+                  <a href="javascript:void(0)" class="backToGalleries">Назад към галерията</a>
               </div>
             </div>
           </div>

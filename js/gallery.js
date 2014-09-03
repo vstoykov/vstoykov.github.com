@@ -1,60 +1,128 @@
-var galleries_obj;
+/*globals jQuery, window */
+/*jslint plusplus: true, nomen: true, regexp: true, vars: true */
 
-function galleryShow(gallery) {
-  gallery = galleries_obj[gallery]
-  pictures = gallery.pictures;
-  $('#gallery_list').html('');
-  for (var item in pictures) {
-    picture = pictures[item];
-    $('#gallery_list').append('<li><div class="thumb-holder"><a href="'+picture.src+'"><img src="'+picture.thumb.src+'" width="'+picture.thumb.width+'" height="'+picture.thumb.height+'" alt="" class="shadow" /></a></div><!--p>'+picture.title+'</p--></li>');
-    //$('#gallery_list').append('<li><a href="'+picture.src+'">'+picture.thumb.outerHTML+'</a><p>'+picture.title+'</p></li>');
-  }
-  $('#gallery_list a').lightBox();
-  $('#galleries_list').hide()
-  $('#gallery_list').fadeIn('slow', function(){$('.backToGalleries').css('visibility', 'visible');});
-}
+(function ($) {
+    "use strict";
 
-function listGalleries(galleries) {
-  if (galleries == undefined) galleries = galleries_obj;
-  $('.backToGalleries').css('visibility', 'hidden');
-  $('#galleries_list').html('');
-  for (var gallery in galleries) {
-    gallery_obj = galleries[gallery];
-    $('#galleries_list').append('<li><a href="javascript:void(0)" id="gallery_'+gallery+'" name="'+gallery+'"><img src="img/gallery-folder.png" class="shadow" /><p>'+gallery_obj.title+'</p></a></li>');
-    $('#gallery_'+gallery).click(function(){
-      gallery = $(this).attr('name');
-      galleryShow(gallery);
-    });
-  }
-  $('#gallery_list').hide()
-  $('#galleries_list').fadeIn('slow');
-}
+    var Gallery = function (data) {
+        var instance = this;
 
-function loadGalleryData() {
-  $.getJSON('js/gallery.json', function(data) {
-    //console.log(data);
-    for(var gallery in data) {
-        gallery_obj = data[gallery];
-        pictures = gallery_obj.pictures
-        gallery_obj.pictures_obj = {}
-        for(var item in pictures) {
-            picture = pictures[item];
-            g_location = 'gallery/'+gallery+'/';
-            pic_location = g_location + picture;
-            thumb_pic = new Image();
-            thumb_pic.src = g_location + 'thumbs/' + picture;;
-            gallery_obj.pictures_obj[item] = {'src':pic_location, 'thumb':thumb_pic, 'title': picture.replace(/_/g, ' ')}
-        };
-        gallery_obj.pictures = gallery_obj.pictures_obj
-        delete gallery_obj.pictures_obj
-    }
+        this.index = data.index;
+        this.slug = data.slug;
+        this.url = this.getURL();
+        this.title = data.title;
+        this.pictures = [];
+        this.$element = null;
 
-    galleries_obj = data;
+        $.each(data.pictures, function (i, name) {
+            var picture = {
+                src: instance.url + name,
+                title: name.replace(/_/g, ' '),
+                thumb: new Image()
+            };
+            picture.thumb.src = instance.url + 'thumbs/' + name;
+            instance.pictures.push(picture);
+        });
+    };
 
-    listGalleries(data)
-  });
-}
+    Gallery.prototype.getURL = function () {
+        return this.index.options.url + this.slug + '/';
+    };
 
-$(document).ready(function(){
-  if (galleries_obj == undefined) loadGalleryData();
-});
+    Gallery.prototype.getElement = function () {
+        if (!this.$element) {
+            this.$element = $('<ul class="gallery">').append(
+                $.map(this.pictures, function (picture) {
+                    return $('<li>').append(
+                        $('<a>', {href: picture.src, title: picture.title}).append(
+                            $('<img>', {
+                                'src': picture.thumb.src,
+                                'width': picture.thumb.width,
+                                'height': picture.thumb.height,
+                                'alt': picture.title,
+                                'class': 'shadow'
+                            })
+                        )
+                    )[0];
+                })
+            ).hide().appendTo(this.index.$element);
+            $('a', this.$element).lightBox();
+        }
+        return this.$element;
+    };
+
+    Gallery.prototype.generateLink = function () {
+        var gallery = this,
+            $link = $('<a href="#">').append([
+                $('<img>', {'src': this.index.options.folderImageSrc, 'class': 'shadow'})[0],
+                $('<p>').text(this.title)[0]
+            ]).click(function () { gallery.show(); });
+        return $link;
+    };
+
+    Gallery.prototype.show = function () {
+        var $element = this.getElement(),
+            index = this.index,
+            gallery = this;
+
+        index.getIndex().hide();
+        $element.fadeIn('slow', function () {
+            index.activeItem = gallery;
+            index.$backButtons.css('visibility', 'visible');
+        });
+    };
+
+    var Galleries = function (options) {
+        var instance = this;
+        this.options = options || {};
+        this.items = [];
+        this.activeItem = null;
+        this.$element = $(this.options.element);
+        this.$backButtons = $(this.options.backButtons);
+        this.$index = null;
+
+        this.$backButtons.click(function () {
+            instance.listIndex();
+        });
+    };
+
+    Galleries.prototype.loadData = function () {
+        var instance = this;
+        while (this.items.length) { this.items.pop(); }
+        $.getJSON(this.options.index, function (response) {
+            $.each(response, function (slug, data) {
+                instance.items.push(new Gallery({
+                    index: instance,
+                    slug: slug,
+                    title: data.title,
+                    pictures: data.pictures
+                }));
+            });
+            instance.listIndex();
+        });
+    };
+
+    Galleries.prototype.getIndex = function (force) {
+        if (!this.$index || force) {
+            this.$index = $('<ul class="galleries">').append(
+                $.map(this.items, function (gallery) {
+                    return $('<li>').append(gallery.generateLink())[0];
+                })
+            ).hide().appendTo(this.$element);
+        }
+        return this.$index;
+    };
+
+    Galleries.prototype.listIndex = function (force) {
+        if (force) {
+            this.$element.html('');
+        } else if (this.activeItem) {
+            this.activeItem.$element.hide();
+        }
+        this.activeItem = null;
+        this.$backButtons.css('visibility', 'hidden');
+        this.getIndex(force).fadeIn('slow');
+    };
+
+    window.Galleries = Galleries;
+})(jQuery);
