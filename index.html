@@ -11,27 +11,6 @@
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
   <script type="text/javascript" src="js/jquery.lightbox-0.5.min.js"></script>
   <script type="text/javascript" src="js/gallery.js"></script>
-  <script type="text/javascript">
-  $(function() {
-    var galleries = new Galleries({
-        index: 'js/gallery.json',
-        url: 'gallery/',
-        element: '#galleries_list',
-        backButtons: '.backToGalleries',
-        folderImageSrc: 'img/gallery-folder.png',
-    });
-    galleries.loadData();
-    $("#main_menu").tabs({
-      ajaxOptions: {
-        error: function(xhr, status, index, anchor) {
-          $(anchor.hash).html("Грешка: Страницата не може да бъде заредена.<br />Извинявам се за причиненото неудобство. Страницата ще бъде поправена при първа възможност.");
-        }
-      }
-    });
-  });
-
-  </script>
-
   <style type="text/css">
       .ui-tabs-hide {display:none;}
   </style>
@@ -154,5 +133,24 @@
   <div id="footer">
       <p>създаден от Венелин Стойков</p>
   </div>
+  <script type="text/javascript">
+  $(function() {
+    var galleries = new Galleries({
+        index: 'js/gallery.json',
+        url: 'gallery/',
+        element: '#galleries_list',
+        backButtons: '.backToGalleries',
+        folderImageSrc: 'img/gallery-folder.png',
+    });
+    galleries.loadData();
+    $("#main_menu").tabs({
+      ajaxOptions: {
+        error: function(xhr, status, index, anchor) {
+          $(anchor.hash).html("Грешка: Страницата не може да бъде заредена.<br />Извинявам се за причиненото неудобство. Страницата ще бъде поправена при първа възможност.");
+        }
+      }
+    });
+  });
+  </script>
 </body>
 </html>
