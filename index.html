@@ -1,138 +1,317 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="bg-BG" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<!--[if IE 7]><html class="ie ie7" lang="en"><![endif]-->
+<!--[if IE 8]><html class="ie ie8" lang="en"><![endif]-->
+<!--[if IE 9]><html class="ie ie9" lang="en"><![endif]-->
+<!--[if gte IE 10 | !IE ]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-  <title>Venelin Stoykov's WEB Site</title>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Venelin Stoykov UI Theme Template">
+  <meta name="author" content="Venelin Stoykov">
+  <title>Venelin Stoykov</title>
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+  
   <link rel="shortcut icon" href="favicon.png"/>
-  <link rel="stylesheet" type="text/css" href="css/style.css" media="all"/>
-  <link rel="stylesheet" type="text/css" href="css/blue_style.css" media="all"/>
   <link rel="stylesheet" type="text/css" href="css/jquery.lightbox-0.5.css" media="all" />
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js"></script>
-  <script type="text/javascript" src="js/jquery.lightbox-0.5.min.js"></script>
-  <script type="text/javascript" src="js/gallery.js"></script>
-  <style type="text/css">
-      .ui-tabs-hide {display:none;}
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <![endif]-->
+  <style>
+    body > footer {position: fixed; bottom: 0; left: 0; right: 0; width: 100%; z-index: -1;}
+    .projects-cards {padding: 0;}
   </style>
 </head>
-<body>
-  <div id="header">
-      <div id="header_logo"><h1>Личната страница на Венелин Стойков</h1></div>
-      <div id="main_menu">
-          <ul>
-              <li><a href="#home"><span>Начало</span></a></li>
-              <li><a href="#about_me"><span>За Мен</span></a></li>
-              <li><a href="#gallery"><span>Галерия</span></a></li>
-              <li><a href="#links"><span>Връзки</span></a></li>
-              <li><a href="#contact_me"><span>Контакти</span></a></li>
+<body class="bg-light pb-5">
+  <header id="header" class="pt-5 mb-5">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Venelin Stoykov</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="navbar-toggler-icon"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav nav ml-auto" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" href="#home" data-toggle="pill" role="tab">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#about" data-toggle="pill" role="tab">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#gallery" data-toggle="pill" role="tab">Gallery</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#projects" data-toggle="pill" role="tab">Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#contacts" data-toggle="pill" role="tab">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://venelin.sytes.net/blog/">Blog</a>
+            </li>
           </ul>
+        </div>
       </div>
-  </div>
+    </nav>
+  </header>
+  
+  <div class="bg-light mb-5">
+    <div class="container h-100">
+      <div class="row">
+        <!-- Page Content -->
+        <main class="col-lg-9">
+          <div class=" tab-content card p-4 mb-4">
+            <section class="tab-pane fade show active" id="home" role="tabpanel">
+              <article>
+                <header class="text-center mb-5">
+                  <h1 class="display-1">Venelin Stoykov</h1>
+                  <p class="h2">My personal experiments</p>
+                </header>
+                
+                <p>
+                  This is a simple website used for frontend experiments.
+                  It's main purpose is to be a theme preview of
+                  <a href="https://venelin.sytes.net">my personal blog</a>.
+                  And still there is a little bit information about me and
+                  my projects. It can be a little bit autdated because my
+                  purpose is not to support up to date content here, but
+                  rather to have some test content which is not lorem ipsum.
+                </p>
+                <p>
+                  You can try the navigation to read more about me and my work.
+                </p>
+              </article>
 
-  <div id="body">
-      <div class="left_column">
-          <div class="article">
-              <h1>Любим цитат</h1>
-                <p class="text">Поражение не съществува, докато човек не се признае за победен!</p>
-          </div>
-          <div class="article">
-              <h1>Ubuntu User</h1>
-              <p class="center"><a href="http://ubuntucounter.geekosophical.net" title="The Ubuntu Counter Project - user number # 23784"><img src="http://ubuntucounter.geekosophical.net/img/ubuntu-user2.php?user=23784" alt="The Ubuntu Counter Project - user number # 23784"></a></p>
-          </div>
-          <div class="article">
-              <h1>Facebook Badge</h1>
-              <!-- Facebook Badge START -->
-              <p class="center">
-               <a href="http://bg-bg.facebook.com/vstoykov" target="_TOP" title="инж. В.Стойков"><img src="http://badge.facebook.com/badge/1489354320.122.791619019.png" width="120" height="257" style="border: 0px;" /></a>
+              <h2>Latest news</h2>
+
+              <article class="card mb-4">
+                <div class="card-body">
+                  <h2 class="card-title">Migrate to using Bootstrap</h2>
+                  <p class="card-text">
+                    The new version of this site is using bootstrap now instead of custom styles and jQueryUI.
+                    It's havier than my old custom styles, but it looks a lot more pretty and modern on all
+                    devices. Currently it uses bootstrap CDN for both styles and javascript. In future I will
+                    migrate styles to custom build from SCSS with the features that are needed for this theme.
+                  </p>
+                </div>
+                <div class="card-footer text-muted">
+                  Posted on July 8, 2018 by Venelin Stoykov
+                </div>
+              </article>
+
+              <article class="card">
+                <div class="card-body">
+                  <h2 class="card-title">Translate to English</h2>
+                  <p class="card-text">
+                    Old version was on Bulgarian. I decided to change the language that I use for texts
+                    to be English. This way there will be some information about me not only in Bulgarian
+                    but also in English. My Blog will continue to be in Bulgarian for now.
+                  </p>
+                </div>
+                <div class="card-footer text-muted">
+                  Posted on July 8, 2018 by Venelin Stoykov
+                </div>
+              </article>
+            </section>
+            <section class="tab-pane fade" id="about" role="tabpanel">
+              <header>
+                <h1>About</h1>
+              </header>
+              <img src="img/avatar.jpg" class="img-thumbnail float-left mr-3" title="Venelin Stoykov" alt="Venelin Stoykov" style="max-width: 300px">
+              <p>
+                My name is Venelin Stoykov. I'm a true developer by heart. Software engineering and programming have been my profession since 2010,
+                and a hobby since I saw a computer for the first time back in the 90s.
               </p>
-              <!-- Facebook Badge END -->
-          </div>
-      </div>
-      <div class="main_content">
-          <div id="home">
+              <p>
+                I'm holding degrees from Technical University in Sofia, Bulgaria
+                and University of Library Studies and Information Technologies in Sofia, Bulgaria.
+              </p>
+              <p>I'm Open Source believer and proponent.</p>
+              <p>
+                Currently I'm working at <a href="https://www.industria.tech">INDUSTRIA</a>
+              </p>
+            </section>
+            <section class="tab-pane fade" id="gallery" role="tabpanel">
               <div class="article">
-                  <h1>Начало</h1>
-                  <div class="content">
-                      <h2>Добре дошли в новата ми страница</h2>
-                      <p class="text">Тук ще намерите информация за мен, както и за моите интереси.
-                      Може също да намерите и полезна информация в сферата на IT.</p>
-                      <p class="text">Това е тестов сайт направен само от HTML, CSS и JavaScript, с цел демонстриране на възможностите им. Сайтът може да се използва за пример за структориране на елементарен персонален сайт, който може да бъде лесно преработен. Създадена е основната html структура и основни класове. Персонализация може да бъде извършена само с редакция на css файла. Цялото съдържание е в един единствен html файл. Изключение прави галерията. Тя зарежда json обект с информация за това къде се намират изображенията и как са структорирани. След това необходимият html се генерира от JavaScript.</p>
+                <h1>Gallery</h1>
+                <div class="content">
+                  <a href="javascript:void(0)" class="backToGalleries">Back to Gallery</a>
+  
+                  <dir id="galleries_list" class="gallery"></dir>
+  
+                  <a href="javascript:void(0)" class="backToGalleries">Back to Gallery</a>
+                </div>
+              </div>
+            </section>
+            <section class="tab-pane fade" id="projects" role="tabpanel">
+              <header>
+                <h1>Projects</h1>
+              </header>
+              <h2 class="h3">My OpenSource projects.</h2>
+              <ul class="projects-cards card-columns">
+                <li class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      <a href="https://github.com/vstoykov/vstoykov.github.com">This site</a>
+                    </h4>
+                    <p class="card-text">
+                      Simple portfolio, single HTML file, multipage-like website.
+                      The purpose of this website is to experiment with frontend.
+                    </p>
                   </div>
-              </div>
-              <div class="article">
-                  <h1>Новини</h1>
-                  <div class="content">
-                      <dl class="news">
-                          <dt>Смяна на адреса</dt><dd class="text">Така и така използвам GitHub за хостинг на този демо сайт, реших да се възползвамм от предимството на късият URL адрес. Все пак живият Django сайт може да бъде намерен на <a href="http://venelin.sytes.net/">http://venelin.sytes.net/</a></dd>
-                          <dt>Използване на embeded images за background</dt><dd class="text">Когато имаме малки изображения като прост background който се повтаря, или някоя малка иконка е по-удачно да се вгради в css-a като текст. Така се пестят заявки към сървъра и при едно по-голямо натоварване може да е от полза. По принцип размера на изображението става малко по-голям, но и за всеки рекуест към сървъра също се праща не малко служебна информация в хедърите, за това за малки изображения се указва полезно нещо.</dd>
-                          <dt>Опит за използване на PIE</dt><dd class="text">Опитах се да използвам PIE за да може да се виждат CSS3 правилата и под IE, но резултатът се оказа плачевен, за това се отказах. За пореден път се убеждавам, че от IE-то нищо не става. Ще трябва да взема да направя един popup който да се появява на потребителите с IE, да им предложи да си сменят browser-a.</dd>
-                          <dt>Качване на динамичен сайт само от HTML, CSS и JavaScript</dt><dd class="text">Реших да направя сайт изцяло статичен, който да е по-разчупен и лесно да може да се ъпдейтва. HTML кодът е изчистен, украсен с CSS и с добавена динамика посресдством JavaScript.</dd>
-                      </dl>
+                </li>
+                
+                <li class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      <a href="https://github.com/vstoykov/venko-django-site">
+                        Venko Django Site
+                      </a>
+                    </h4>
+                    <p class="card-text">
+                      A simple Django site with blog gallery and fiew small other apps.
+                      It was created as playground for experiments with Django and then
+                      become my personal blog.
+                      You can see it live at <a href="https://venelin.sytes.net">venelin.sytes.net</a>
+                    </p>
                   </div>
-              </div>
-          </div>
-          <div id="about_me">
-              <div class="article">
-                  <h1>За Мен</h1>
-                  <div class="content">
-                      <div class="img_holder"><img src="img/avatar.jpg" title="Венелин Стойков" alt="avatar.jpg" class="shadow"/></div>
-                      <h3>Кратка история</h3>
-                      <p class="text">Казвам се Венелин Красимиров Стойков, роден съм в малкото китно старопланинско градче Елена. Образованието си до 8-ми клас изкарах в родния си град, след което се преместих да уча в старопрестолния град Велико Търново, където завърших средното си образование. Започнах висшето си образование в Технически Университет - Варна. Там изкарах една година след което се преместих в Технически Университет - София, където придобих бакалавърска степен на инженер по електроника.</p>
-                      <h3>Интереси</h3>
-                      <p class="text">Основните ми интереси са в областа на информационните технологии</p>
-                      <h3>Професионално развитие</h3>
-                      <p class="text">Работих като мърчандайзър в Метро Варна. След идването ми в София започнах като съпорт към интернет фирма Метролан. Работих като системен администратор в Института по Информационни Технологии към БАН. След това започнах като WEB програмист за фирма Меджик Солюшънс, където работя и до сега.</p>
+                </li>
+    
+                <li class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      <a href="https://github.com/vstoykov/django-clamd">
+                        django-clamd
+                      </a>
+                    </h4>
+                    <p class="card-text">
+                      Simple wrapper around <code>python-clamd</code> to be used
+                      easily with Django sites.
+                    </p>
                   </div>
-              </div>
-          </div>
-          <div id="gallery">
-            <div class="article">
-              <h1>Gallery</h1>
-              <div class="content">
-                  <a href="javascript:void(0)" class="backToGalleries">Назад към галерията</a>
-
-                    <dir id="galleries_list" class="gallery"></dir>
-
-                  <a href="javascript:void(0)" class="backToGalleries">Назад към галерията</a>
-              </div>
-            </div>
-          </div>
-          <div id="links">
-            <div class="article">
-              <h1>Полезни Връзки</h1>
-              <div class="content">
-                <p>На това място ще слагам връзки към интересни и ползени неща в мрежата.</p>
-                <dl class="links">
-                  <a href="http://code.google.com/"><dt>Google Code</dt><dd>http://code.google.com/</dd></a>
-                  <a href="http://www.linux-index.org/"><dt>Linux Index</dt><dd>http://www.linux-index.org/</dd></a>
-                  <a href="http://www.linux-bg.org/"><dt>Linux BG</dt><dd>http://www.linux-bg.org/</dd></a>
-                  <a href="http://appdb.winehq.org/"><dt>AppDb WineHq</dt><dd>http://appdb.winehq.org/</dd></a>
-                  <a href="http://www.sjdjweis.com/linux/proxyarp/"><dt>Proxy ARP with Linux</dt><dd>http://www.sjdjweis.com/linux/proxyarp/</dd></a>
-                  <a href="http://www.djangoproject.com/"><dt>Django Project</dt><dd>http://www.djangoproject.com/</dd></a>
-                </dl>
-              </div>
-            </div>
-          </div>
-          <div id="contact_me">
-            <div class="article">
-              <h1>Контакти</h1>
-              <div class="content contacts">
-                <p>Тук ще намерите моите координати:</p>
+                </li>
+    
+                <li class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      <a href="https://github.com/vstoykov/django-static-webserver">
+                        django-static-webserver
+                      </a>
+                    </h4>
+                    <p class="card-text">
+                      Simple app for serving Django templates as pages. The purpose
+                      of it is to help frontend developers to make Django themes.
+                    </p>
+                  </div>
+                </li>
+    
+                <li class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      <a href="https://github.com/vstoykov/convert-encoding">
+                        convert-encoding
+                      </a>
+                    </h4>
+                    <p class="card-text">
+                      Simple console app that converts encoding of text file.
+                      The prime purpose was converting subtitles to encoding
+                      compattible with my TV.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+    
+              <h2 class="h3">OpenSource project for which I'm their maintainer.</h2>
+              <ul class="projects-cards card-columns">
+                <li class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      <a href="https://github.com/matthewwithanm/django-imagekit">
+                        django-imagekit
+                      </a>
+                    </h4>
+                    <p class="card-text">
+                      Automated image processing for Django.
+                    </p>
+                  </div>
+                </li>
+    
+                <li class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      <a href="https://github.com/matthewwithanm/pilkit">
+                        pilkit
+                      </a>
+                    </h4>
+                    <p class="card-text">
+                      Utilities and processors built for, and on top of PIL
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </section>
+            <section class="tab-pane fade" id="contacts" role="tabpanel">
+              <header>
+                <h1>Contacts</h1>
+              </header>
+                
+              <p>If you want to conact with me you can do it in one of the following ways:</p>
+              <address>
                 <dl>
-                  <dt>skype:</dt><dd>doommazter</dd>
-                  <dt>icq:</dt><dd>297864804</dd>
-                  <dt>facebook:</dt><dd><a href="http://www.facebook.com/vstoykov">www.facebook.com/vstoykov</a></dd>
-                  <dt>e-mail:</dt><dd><a href="mailto:doommaster@email.bg">doommaster@email.bg</a></dd>
-                  <dt>GSM:</dt><dd>0878 1987 10</dd><dd>088 33 155 02</dd>
+                  <dt>facebook:</dt>
+                  <dd><a href="https://www.facebook.com/vstoykov">www.facebook.com/vstoykov</a></dd>
+                  
+                  <dt>Google+:</dt>
+                  <dd><a href="https://www.google.com/profiles/v.k.stoykov">www.google.com/profiles/v.k.stoykov</a></dd>
+                  
+                  <dt>Github:</dt>
+                  <dd><a href="https://github.com/vstoykov">github.com/vstoykov</a></dd>
+                  
+                  <dt>Phone:</dt>
+                  <dd><a href="tel:+359878198710">(+359) 87 819 87 10</a></dd>
                 </dl>
-              </div>
-            </div>
+              </address>
+            </section>
           </div>
+        </main>
+        <aside class="col-lg-3">
+          <div class="card mb-4">
+            <h5 class="card-header">Favourite Quote</h5>
+            <blockquote class="card-body">
+              There is no defeat until one admits being defeated!
+            </blockquote>
+          </div>
+          <div class="card my-4">
+              <h5 class="card-header">Facebook Badge</h5>
+              <p class="card-body text-center">
+                <!-- Facebook Badge START -->
+                <a href="https://www.facebook.com/vstoykov" target="_TOP" title="Venelin Stoykov">
+                  <img src="https://badge.facebook.com/badge/1489354320.122.791619019.png" class="img-fluid" width="120">
+                </a>
+                <!-- Facebook Badge END -->
+              </p>
+          </div>
+        </aside>
       </div>
+    </div>
   </div>
-  <div id="footer">
-      <p>създаден от Венелин Стойков</p>
-  </div>
+
+  <footer class="py-4 bg-dark text-white">
+    <div class="container text-center">
+      Copyright Venelin Stoykov 2018
+    </div>
+  </footer>
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/jquery.lightbox-0.5.min.js"></script>
+  <script type="text/javascript" src="js/gallery.js"></script>
   <script type="text/javascript">
   $(function() {
     var galleries = new Galleries({
@@ -143,13 +322,6 @@
         folderImageSrc: 'img/gallery-folder.png',
     });
     galleries.loadData();
-    $("#main_menu").tabs({
-      ajaxOptions: {
-        error: function(xhr, status, index, anchor) {
-          $(anchor.hash).html("Грешка: Страницата не може да бъде заредена.<br />Извинявам се за причиненото неудобство. Страницата ще бъде поправена при първа възможност.");
-        }
-      }
-    });
   });
   </script>
 </body>
