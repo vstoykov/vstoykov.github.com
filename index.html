@@ -22,7 +22,8 @@
   <![endif]-->
   <style>
     body > footer {position: fixed; bottom: 0; left: 0; right: 0; width: 100%; z-index: -1;}
-    .projects-cards {padding: 0;}
+    ul.card-columns, ul.card-deck, ul.card-group {padding-left: 0;}
+    .card-columns .card {margin-bottom: 1.25rem;}
   </style>
 </head>
 <body class="bg-light pb-5">
@@ -140,11 +141,11 @@
               <div class="article">
                 <h1>Gallery</h1>
                 <div class="content">
-                  <a href="javascript:void(0)" class="backToGalleries">Back to Gallery</a>
+                  <a href="#gallery" class="backToGalleries">Back to Gallery</a>
   
-                  <dir id="galleries_list" class="gallery"></dir>
+                  <ul id="galleries_list" class="card-columns"></ul>
   
-                  <a href="javascript:void(0)" class="backToGalleries">Back to Gallery</a>
+                  <a href="#gallery" class="backToGalleries">Back to Gallery</a>
                 </div>
               </div>
             </section>
