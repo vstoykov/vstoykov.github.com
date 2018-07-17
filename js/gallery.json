@@ -1,57 +1,44 @@
-{
-    "avatar_movie": {
-        "title": "Avatar Movie",
-        "pictures": [
-            "avatar_01.jpg",
-            "avatar_03.jpg",
-            "avatar_05.jpg",
-            "avatar_07.jpg",
-            "avatar_02.jpg",
-            "avatar_04.jpg",
-            "avatar_06.jpg"
-        ]
-    },
-    "avatars": {
-        "title": "My Avatars",
-        "pictures": [
-            "avatar_1.jpg",
-            "avatar_3.jpg",
-            "avatr_2.jpg",
-            "punisher.jpg"
-        ]
-    },
-    "cool": {
-        "title": "Cool Photoes",
-        "pictures": [
-            "pic_1.jpg",
-            "pic_2.jpg",
-            "pic_3.jpg",
-            "pic_4.jpg"
-        ]
-    },
-    "fun_images": {
-      "title": "Fun Images",
-      "pictures": [
-        "12345.jpg",
-        "1234.jpg",
-        "12546.jpg",
-        "137_n.jpg",
-        "DSC03684.JPG",
-        "DSC03686.JPG",
-        "DSK_Bank_ATM.jpg",
-        "How_A_Womans_Brain_Works_During_An_Argument.jpg",
-        "How_Mans_Brain_Works_During_An_Argument.jpg",
-        "Image_00098.jpg"
-      ]
-    },
-    "godsmack": {
-        "title": "Godsmack",
-        "pictures": [
-            "godsmack3.jpg",
-            "godsmackbutt.jpg",
-            "Godsmack.jpg",
-            "Godsmack4b.jpg",
-            "Godsmack_home_made.jpg"
-        ]
-    }
+{  
+  "me": {
+    "title": "Me, Me and Me",
+    "pictures": [
+      "Venko-4.jpg",
+      "Venko-3.jpg",
+      "Venko-2.jpg",
+      "Venko-1.jpg"
+    ]
+  },
+  "diplomna": {
+    "title": "Bachelor's Degree Project",
+    "pictures": [
+      "IMG_3421.jpg",
+      "IMG_3422.jpg",
+      "IMG_3423.jpg",
+      "Image_00054.jpg",
+      "Image_00055.jpg",
+      "Image_00056.jpg",
+      "IMG_3416.jpg",
+      "IMG_3417.jpg",
+      "IMG_3418.jpg",
+      "IMG_3419.jpg",
+      "IMG_3420.jpg",
+      "IMG_3424.jpg",
+      "IMG_3425.jpg"
+    ]
+  },
+  "fun_images": {
+    "title": "Fun Images",
+    "pictures": [
+      "12345.jpg",
+      "1234.jpg",
+      "12546.jpg",
+      "137_n.jpg",
+      "DSC03684.JPG",
+      "DSC03686.JPG",
+      "DSK_Bank_ATM.jpg",
+      "How_A_Womans_Brain_Works_During_An_Argument.jpg",
+      "How_Mans_Brain_Works_During_An_Argument.jpg",
+      "Image_00098.jpg"
+    ]
+  }
 }

@@ -4,124 +4,140 @@
 (function ($) {
     "use strict";
 
-    var Gallery = function (data) {
-        var instance = this;
-
-        this.index = data.index;
-        this.slug = data.slug;
-        this.url = this.getURL();
-        this.title = data.title;
-        this.pictures = [];
-        this.$element = null;
-
-        $.each(data.pictures, function (i, name) {
-            var picture = {
-                src: instance.url + name,
-                title: name.replace(/_/g, ' '),
-                thumb: new Image()
-            };
-            picture.thumb.src = instance.url + 'thumbs/' + name;
-            instance.pictures.push(picture);
-        });
+    function Gallery (data) {
+      this.index = data.index;
+      this.slug = data.slug;
+      this.url = data.url;
+      this.title = data.title;
+      this.$element = null;
+      this.pictures = $.map(data.pictures, function (name) {
+        return {
+          src: this.url + name,
+          title: name.replace(/[_\-]/g, ' ').split('.')[0],
+          thumb: {
+            src: this.url + 'thumbs/' + name
+          }
+        };
+      }.bind(this));
     };
 
-    Gallery.prototype.getURL = function () {
-        return this.index.options.url + this.slug + '/';
-    };
+    Gallery.prototype.getThumbnailUrl = function () {
+      return this.pictures[0].thumb.src;
+    }
 
     Gallery.prototype.getElement = function () {
         if (!this.$element) {
-            this.$element = $('<ul class="gallery">').append(
-                $.map(this.pictures, function (picture) {
-                    return $('<li>').append(
-                        $('<a>', {href: picture.src, title: picture.title}).append(
-                            $('<img>', {
-                                'src': picture.thumb.src,
-                                'width': picture.thumb.width,
-                                'height': picture.thumb.height,
-                                'alt': picture.title,
-                                'class': 'shadow'
-                            })
-                        )
-                    )[0];
-                })
-            ).hide().appendTo(this.index.$element);
-            $('a', this.$element).lightBox();
+          this.$element = this.render().hide().insertAfter(this.index.$element);
+          $('a', this.$element).lightBox();
         }
         return this.$element;
     };
 
-    Gallery.prototype.generateLink = function () {
-        var gallery = this,
-            $link = $('<a href="#">').append([
-                $('<img>', {'src': this.index.options.folderImageSrc, 'class': 'shadow'})[0],
-                $('<p>').text(this.title)[0]
-            ]).click(function () { gallery.show(); });
-        return $link;
-    };
+    Gallery.prototype.render = function () {
+      return $('<ul>', {
+        'class': 'card-columns',
+        'id': this.url
+      }).append(
+        $.map(this.pictures, this.renderPicture)
+      );
+    }
 
-    Gallery.prototype.show = function () {
-        var $element = this.getElement(),
-            index = this.index,
-            gallery = this;
+    Gallery.prototype.renderPicture = function (picture) {
+      return $('<li class="card">').append(
+        $('<a>', {
+          'href': picture.src,
+          'title': picture.title
+        }).append(
+          $('<img>', {
+            'src': picture.thumb.src,
+            'alt': picture.title,
+            'class': 'card-img-top'
+          })
+        )
+      );
+    }
 
-        index.getIndex().hide();
-        $element.fadeIn('slow', function () {
-            index.activeItem = gallery;
-            index.$backButtons.css('visibility', 'visible');
-        });
-    };
+    function Galleries (options) {
+      this.options = options || {};
+      this.items = [];
+      this.$element = $(this.options.element);
+      this.$backButtons = $(this.options.backButtons);
 
-    var Galleries = function (options) {
-        var instance = this;
-        this.options = options || {};
-        this.items = [];
-        this.activeItem = null;
-        this.$element = $(this.options.element);
-        this.$backButtons = $(this.options.backButtons);
-        this.$index = null;
-
-        this.$backButtons.click(function () {
-            instance.listIndex();
-        });
+      this.$backButtons.on('click', function(e) {
+        this.listIndex()
+        e.preventDefault();
+      }.bind(this));
+      this.$element.on('click', 'a[data-gallery]', function (e) {
+        var $card = $(e.currentTarget).closest('.card');
+        this.showGallery($card.data('gallery'));
+        e.preventDefault();
+      }.bind(this));
     };
 
     Galleries.prototype.loadData = function () {
-        var instance = this;
-        while (this.items.length) { this.items.pop(); }
-        $.getJSON(this.options.index, function (response) {
-            $.each(response, function (slug, data) {
-                instance.items.push(new Gallery({
-                    index: instance,
-                    slug: slug,
-                    title: data.title,
-                    pictures: data.pictures
-                }));
-            });
-            instance.listIndex();
-        });
+      $.ajax({
+        url: this.options.index,
+        context: this,
+        dataType: 'json',
+      }).done(function (response) {
+        this.items = $.map(response, function (data, slug) {
+          return new Gallery({
+            index: this,
+            slug: slug,
+            url: this.options.url + slug + '/',
+            title: data.title,
+            pictures: data.pictures
+          });
+        }.bind(this));
+        this.render();
+        this.listIndex();
+      });
     };
 
-    Galleries.prototype.getIndex = function (force) {
-        if (!this.$index || force) {
-            this.$index = $('<ul class="galleries">').append(
-                $.map(this.items, function (gallery) {
-                    return $('<li>').append(gallery.generateLink())[0];
-                })
-            ).hide().appendTo(this.$element);
-        }
-        return this.$index;
-    };
+    Galleries.prototype.render = function () {
+      this.$element.html('');
+      var elements = $.map(this.items, this.renderGaleryCard);
+      this.$element.append(elements);
+    }
 
-    Galleries.prototype.listIndex = function (force) {
-        if (force) {
-            this.$element.html('');
-        } else if (this.activeItem) {
-            this.activeItem.$element.hide();
-        }
-        this.activeItem = null;
-        this.$backButtons.css('visibility', 'hidden');
-        this.getIndex(force).fadeIn('slow');
+    Galleries.prototype.renderGaleryCard = function(gallery) {
+      var url = '#' + gallery.url;
+      var $card = $('<li class="card">').append(
+        $('<a>', {
+          'href': url,
+          'data-gallery': gallery.slug
+        }).append(
+          $('<img>', {
+            'src': gallery.getThumbnailUrl(),
+            'class': 'card-img-top',
+          })
+        )
+      ).append(
+        $('<div class="card-body text-center">').append(
+          $('<a>', {
+            'href': url,
+            'class': 'h4',
+            'data-gallery': gallery.slug
+          }).text(gallery.title)
+        )
+      ).data('gallery', gallery);
+      return $card;
+    }
+
+    Galleries.prototype.showGallery = function(gallery) {
+      var $el = gallery.getElement();
+      this.$element.hide();
+      $el.fadeIn('slow', function () {
+        this.$backButtons.css('visibility', 'visible');
+      }.bind(this));
+    }
+    Galleries.prototype.listIndex = function (e) {
+      var loadedGalleries = $.map(this.items, function(item) {
+        return item.$element ? item.$element.get(0) : null;
+      }).filter(Boolean);
+      $(loadedGalleries).hide();
+      this.$backButtons.css('visibility', 'hidden');
+      this.$element.fadeIn('slow');
     };
 
     window.Galleries = Galleries;
