@@ -10,9 +10,9 @@ echo "Initialize variables"
     gallery_dir=$(echo $gallery | tr ' ' _)
     gallery_dir=${gallery_dir,,}
     maxwidth=1024
-    maxwidththumb=100
+    maxwidththumb=380
     maxheight=768
-    maxheightthumb=100
+    maxheightthumb=380
     jsonfile="$gallery_dir/gallery.json"
 
 (    
