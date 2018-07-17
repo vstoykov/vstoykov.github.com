@@ -1,11 +1,11 @@
 {  
-  "avatars": {
-    "title": "My Avatars",
+  "me": {
+    "title": "Me, Me and Me",
     "pictures": [
-        "avatar_1.jpg",
-        "avatar_3.jpg",
-        "avatr_2.jpg",
-        "punisher.jpg"
+      "Venko-4.jpg",
+      "Venko-3.jpg",
+      "Venko-2.jpg",
+      "Venko-1.jpg"
     ]
   },
   "fun_images": {
