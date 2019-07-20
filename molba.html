@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Молба за Отпуска</title>
+  <style>
+    @page {
+      size: 21cm 29.7cm;
+      padding: 0;
+      margin: 0;
+    }
+    @media print {
+      html, body {
+        width: 21cm;
+        height: 29.5cm;
+        padding: 0;
+        margin: 0;
+      }
+      main {
+        margin: 0 0;
+        border: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+        height: 29.6cm;
+      }
+    }
+    @media screen {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background: #b4b4b4;
+      }
+      main {
+        width: 21cm;
+        height: 29.7cm;
+        margin: 20px auto;
+        border: 1px solid #cec7c7;
+        -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.44);
+        -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.44);
+        box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.44);
+      }
+    }
+    @media all {
+      * {
+        box-sizing: border-box;
+      }
+
+      main {
+        position: relative;
+        display: block;
+        background: white;
+        padding: 2cm;
+        font-family: "Times New Roman", Georgia, Serif;
+        font-size: 14pt;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 5cm;
+        margin-bottom: 2cm;
+        font-size: 36pt;
+      }
+      h2 {
+        font-size: 14pt;
+        margin-left: 3cm;
+        margin-bottom: 2cm;
+      }
+      .recipient {
+        text-align: right;
+      }
+      .footer {
+        position: absolute;
+        bottom: 3cm;
+        left: 2cm;
+        right: 2cm;
+      }
+      .place-and-date {
+        float: left;
+      }
+      .sender {
+        float: right;
+        text-align: right;
+      }
+      [contenteditable="true"] {
+        min-width: 1cm;
+        display: inline-block;
+      }
+      [contenteditable="true"]:hover {
+        outline: #d0d0d0 dotted thin;
+      }
+      [contenteditable="true"]:empty:not(:focus):before {
+        content:attr(data-placeholder);
+        color: gray;
+      }
+    }
+  </style>
+</head>
+<body ng-app="applicationApplication">
+  <main ng-controller="ApplicationCtrl">
+    <div class="recipient">
+      До
+      <span id="recipientFullName" contenteditable="true">Петър Петков</span><br>
+      <span id="recipientPosition" contenteditable="true">Управител</span>
+      на
+      <span id="recipientCompany" contenteditable="true">Меджик Сълюшънс ООД</span>
+    </div>
+    <h1>МОЛБА</h1>
+    <h2>
+      от
+      <span id="fullName" contenteditable="true">Венелин Красимиров Стойков</span><br>
+      <span id="position" contenteditable="true">Технически сътрудник</span>
+      в
+      <span id="company" contenteditable="true">Меджик Сълюшънс ООД</span>
+    </h2>
+    <p><span id="obrashtenie" contenteditable="true">г-н Управител,</span></p>
+    <p>
+      Моля да ми бъде разрешено да ползвам платен отпуск от
+      <span id="fromDate" contenteditable="true" data-placeholder="ДД.ММ.ГГГГ"></span>
+      до
+      <span id="toDate" contenteditable="true" data-placeholder="ДД.ММ.ГГГГ"></span>
+      /общо <span id="workingDays" contenteditable="true">n работни дни</span>/
+    </p>
+    <div class="footer">
+      <div class="place-and-date">
+        <span id="address" contenteditable="true">София</span>,<br>
+        <span id="today" contenteditable="true" data-placeholder="ДД.ММ.ГГГГ"></span>
+      </div>
+      <div class="sender">
+        С уважение: .....................<br>
+        /<span id="signatureName" contenteditable="true">В. Стойков</span>/
+      </div>
+    </div>
+  </main>
+  <script>
+    (function() {
+      'use strict';
+      var today = new Date();
+      var context = {
+        recipientFullName: 'Full Name 1',
+        recipientPosition: 'Position 1',
+        recipientCompany: 'Company Name Ltd.',
+        fullName: 'Full Name 2',
+        position: 'Position 2',
+        company: 'Company',
+        obrashtenie: 'Mr. Boss',
+        today: today
+      }
+
+      function getAllValues() {
+        document.querySelectorAll
+      }
+      console.log($$('[contenteditable=true]'));
+
+      function setValues(context) {
+        Object.keys(context).forEach(function(key){
+          var elm = document.getElementById(key);
+          elm.textContent = context[key];
+        });
+      }
+
+      function getValues(context) {
+        context.keys().forEach(function(key){
+          var elm = document.getElementById(key);
+          context[key] = elm.textContent;
+        });
+      }
+
+      setValues(context);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Молба за Отпуска</title>
+
+	<!-- External Styles -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/css/bootstrap-datepicker.min.css"/>
+	
+	<!-- External JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.1/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment-with-locales.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.0/js/bootstrap-datepicker.min.js"></script>
+	
+	<!-- Internal styles -->
+	<style>
+		@page {
+			size: 21cm 29.7cm;
+			padding: 0;
+			margin: 0;
+		}
+		@media print {
+			html, body {
+				width: 21cm;
+				height: 29.5cm;
+				padding: 0;
+				margin: 0;
+			}
+			main {
+				margin: 0 0;
+				border: none;
+				-webkit-box-shadow: none;
+				-moz-box-shadow: none;
+				box-shadow: none;
+				height: 29.6cm;
+			}
+		}
+		@media screen {
+			html, body {
+				margin: 0;
+				padding: 0;
+				background: #b4b4b4;
+			}
+			main {
+				width: 21cm;
+				height: 29.7cm;
+				margin: 20px auto;
+				border: 1px solid #cec7c7;
+				-webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.44);
+				-moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.44);
+				box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.44);
+			}
+		}
+		@media all {
+			* {
+				box-sizing: border-box;
+			}
+
+			main {
+				position: relative;
+				display: block;
+				background: white;
+				padding: 2cm;
+				font-family: "Times New Roman", Georgia, Serif;
+				font-size: 14pt;
+			}
+			h1 {
+				text-align: center;
+				margin-top: 5cm;
+				margin-bottom: 2cm;
+				font-size: 36pt;
+			}
+			h2 {
+				font-size: 14pt;
+				margin-left: 3cm;
+				margin-bottom: 2cm;
+			}
+			.recipient {
+				text-align: right;
+			}
+			.footer {
+				position: absolute;
+				bottom: 3cm;
+				left: 2cm;
+				right: 2cm;
+			}
+			.place-and-date {
+				float: left;
+			}
+			.sender {
+				float: right;
+				text-align: right;
+			}
+			[contenteditable="true"] {
+				min-width: 1cm;
+				display: inline-block;
+			}
+			[contenteditable="true"]:hover {
+				outline: #d0d0d0 dotted thin;
+			}
+			[contenteditable="true"]:empty:not(:focus):before {
+				content:attr(data-placeholder);
+				color: gray;
+			}
+		}
+	</style>
+</head>
+<body ng-app="MolbaOtpuska">
+	<main ng-controller="mainCtrl">
+		<div class="recipient">
+			До
+			<span id="recipientFullName" contenteditable="true">Петър Петков</span><br>
+			<span id="recipientPosition" contenteditable="true">Управител</span>
+			на
+			<span id="recipientCompany" contenteditable="true">Меджик Сълюшънс ООД</span>
+		</div>
+		<h1>МОЛБА</h1>
+		<h2>
+			от
+			<span id="fullName" contenteditable="true">Венелин Красимиров Стойков</span><br>
+			<span id="position" contenteditable="true">Технически сътрудник</span>
+			в
+			<span id="company" contenteditable="true">Меджик Сълюшънс ООД</span>
+		</h2>
+		<p><span id="obrashtenie" contenteditable="true">г-н Управител,</span></p>
+		<p>
+			Моля да ми бъде разрешено да ползвам платен отпуск <vacation-days></vacation-days> от
+			<span class="input-daterange">
+				<input type="text" class="input-small" value="26.06.2015" data-dateformat="dd.mm.yyyy"/>
+				<span class="add-on">до</span>
+				<input type="text" class="input-small" value="30.06.2015" data-dateformat="dd.mm.yyyy"/>
+			</span>
+			<span id="fromDate" contenteditable="true" class="datepicker" data-placeholder="ДД.ММ.ГГГГ"></span>
+			до
+			<span id="toDate" contenteditable="true" class="datepicker" data-placeholder="ДД.ММ.ГГГГ"></span>
+			/общо <span id="workingDays" contenteditable="true">n работни дни</span>/
+		</p>
+		<div class="footer">
+			<div class="place-and-date">
+				<span id="address" contenteditable="true">София</span>,<br>
+				<span id="today" contenteditable="true" data-placeholder="ДД.ММ.ГГГГ">{{ today.format("DD.MM.YYYY") }}</span>
+			</div>
+			<div class="sender">
+				С уважение: .....................<br>
+				/<span id="signatureName" contenteditable="true">В. Стойков</span>/
+			</div>
+		</div>
+	</main>
+
+	<script>
+		(function($) {
+			"use strict";
+			var dateFormat = 'dd.mm.yyyy';
+			var app = angular.module('MolbaOtpuska', []);
+
+			app.directive('vacationDays', function() {
+				return {
+					restrict: 'E',
+					template: '<span ng-if="vacationDays == 1">на {{ startDate }} /общо 1 работен ден/</span><span ng-if="vacationDays > 1">от {{ startDay }} до {{ endDay }} /общо {{ vacationDays }} работни дни/</span>',
+					link: function(scope, elem, attr) {
+						var $elem = $(elem);
+						$elem.datepicker({
+							dateFormat: dateFormat,
+							todayHighlight: true
+						});
+						$elem.on('focus click', function() {
+						   // alert('focus');
+							$elem.datepicker('show');
+						});
+						$elem.on('changeDate', function() {
+							scope
+						});
+					}
+				}
+			});
+			
+			app.directive('inputDaterange', function() {
+				return {
+					restrict: 'C',
+					scope: { 
+						startDate: new Date(),
+						endDate: new Date(),
+						vacationDays: 0
+					},
+					bindToController: true,
+					controller: function() {
+						var self = this;
+						
+						self.calculateDaysBetween = function () {
+							self.vacationDays = Math.round(Math.abs((+self.startDate) - (+self.endDate)) / 8.64e7)
+							return self.vacationDays;
+						}
+					}
+				}
+			})
+
+			app.controller('mainCtrl', ['$scope', function($scope) {
+				$scope.today = moment();
+			}]);
+		}(jQuery));
+	</script>
+</body>
+</html>
